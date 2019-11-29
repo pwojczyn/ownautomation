@@ -9,12 +9,18 @@ app.get('/', (req, res) => {
 });
 
 app.get('/test', function (req, res) {
-  res.send('test command! ownAutmation');
+  
+  res.send('test command! ownAutmation URL: ' + req.get.name);
 });
 
 app.get('/info', function(req, res){
   res.sendFile('./' + staticFolder + '/info.html', { root: __dirname });
 }); 
+
+app.get('/users/:name', function(req, res) {
+    res.send('What is up ' + req.params.name + '!');
+    console.log(req);
+});
 
 app.listen(3000, function () {
   console.log('ownAutomation app listening on port 3000!');
